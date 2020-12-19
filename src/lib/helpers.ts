@@ -177,9 +177,8 @@ export function createFixAction(dependencies: Set<any>, globalScope: Scope.Scope
 
             const newImportName = undefinedIndentifier
             const isNewImportDefaultExport = isDefaultlyExported(absoluteModulePath, newImportName)
-
-            var importStatement =
-                `import ${isNewImportDefaultExport ? `{ ${newImportName} }` : newImportName} from '${foundModule}'`
+            const importStatement =
+                `import ${isNewImportDefaultExport ? newImportName : `{ ${newImportName} }`} from '${foundModule}'`;
 
             if (importDeclaration) {
                 return fixer.insertTextAfter(importDeclaration, '\n' + importStatement)

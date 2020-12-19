@@ -39,6 +39,11 @@ const AutoImportRule: Rule.RuleModule = {
                 globalScope.through.forEach(function (ref) {
                     const identifier = ref.identifier as any;
 
+                    // In typescript interface or type.
+                    if ( identifier.parent?.type === 'TSTypeReference' ) {
+                        return;
+                    }
+
                     if (!considerTypeOf && hasTypeOfOperator(identifier)) {
                         return;
                     }
@@ -48,7 +53,7 @@ const AutoImportRule: Rule.RuleModule = {
                     context.report({
                         node: identifier,
                         message: '{{name}} is not defined.',
-                        data: identifier as any,
+                        data: identifier,
                         fix: createFixAction(dependencies, globalScope, context, options, fixed, missingIdentifier, identifier)
                     });
                 });
