@@ -1,0 +1,43 @@
+{
+  "name": "eslint-plugin-auto-import-ts",
+  "version": "0.1.0",
+  "description": "Automatically update imports",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "abstractball",
+  "main": "dist/lib/index.js",
+  "scripts": {
+    "test": "mocha dist/tests --recursive",
+    "build": "rm -rf ./dist && tsc -p tsconfig.json",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "ts-morph": "^9.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abstractball/eslint-plugin-auto-import-ts"
+  },
+  "bugs": {
+    "url": "https://github.com/abstractball/eslint-plugin-auto-import-ts"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/eslint": "^7.2.6",
+    "@types/node": "^14.14.14",
+    "eslint": "^4.7.2",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "ISC"
+}
